@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Plus, Download, Eye, Trash2, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import headerimg from "/src/assets/CMS/headerimg.png"
+import { Link } from 'react-router-dom';
 
 export default function CustomerManagement() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -130,6 +131,7 @@ export default function CustomerManagement() {
                 {/* Table Section */}
                 <div className="grid grid-cols-1 gap-6 mt-6 mb-6">
                     <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+
                         <div className="overflow-x-auto">
                             <table className="w-full">
                                 <thead>
@@ -161,10 +163,12 @@ export default function CustomerManagement() {
                                             <td className="px-6 py-4 font-medium text-[13px] text-[#71717A]">{customer.date}</td>
                                             <td className="px-6 py-4">
                                                 <div className="flex items-center gap-2">
-                                                    <button className="bg-[#FFBF4A] text-white px-4 py-2 rounded-lg flex items-center gap-2 text-[13px] font-medium transition-colors ">
-                                                        <Eye className="w-3 h-3" />
-                                                        View
-                                                    </button>
+                                                    <Link to={`/customer/${customer.id}`}>
+                                                        <button className="bg-[#FFBF4A] text-white px-4 py-2 rounded-lg flex items-center gap-2 text-[13px] font-medium transition-colors ">
+                                                            <Eye className="w-3 h-3" />
+                                                            View
+                                                        </button>
+                                                    </Link>
                                                     <button className="bg-red-600 hover:bg-red-700 text-white p-2 rounded-lg transition-colors">
                                                         <Trash2 className="w-4 h-4" />
                                                     </button>
@@ -175,7 +179,6 @@ export default function CustomerManagement() {
                                 </tbody>
                             </table>
                         </div>
-
 
                         <div className="px-6 py-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div className="text-[13px] text-[#71717A]">
@@ -205,6 +208,7 @@ export default function CustomerManagement() {
                                 </button>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
