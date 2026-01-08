@@ -67,14 +67,18 @@ export default function CustomerManagement() {
 
                 {/* Filters and Export Section */}
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
-                    <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
-                        <div className="flex flex-wrap gap-4 items-center">
-                            <div className="flex items-center gap-2">
-                                <span className="text-[13px] font-semibold text-[#18181B]">State:</span>
+                    <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
+
+                        {/* Filters */}
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-4 w-full lg:w-auto">
+
+                            {/* State */}
+                            <div className="flex items-center gap-2 w-full sm:w-auto">
+                                <span className="text-[13px] font-semibold text-[#18181B] whitespace-nowrap">State:</span>
                                 <select
                                     value={stateFilter}
                                     onChange={(e) => setStateFilter(e.target.value)}
-                                    className="h-[30px] w-[100px] text-[13px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none bg-white cursor-pointer"
+                                    className="h-[30px] w-full sm:w-[120px] text-[13px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none bg-white cursor-pointer"
                                 >
                                     <option>All</option>
                                     <option>Maharashtra</option>
@@ -83,12 +87,13 @@ export default function CustomerManagement() {
                                 </select>
                             </div>
 
-                            <div className="flex items-center gap-2">
-                                <span className="text-[13px] font-semibold text-[#18181B]">Status:</span>
+                            {/* Status */}
+                            <div className="flex items-center gap-2 w-full sm:w-auto">
+                                <span className="text-[13px] font-semibold text-[#18181B] whitespace-nowrap">Status:</span>
                                 <select
                                     value={statusFilter}
                                     onChange={(e) => setStatusFilter(e.target.value)}
-                                    className="h-[30px] w-[100px] text-[13px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none bg-white cursor-pointer"
+                                    className="h-[30px] w-full sm:w-[120px] text-[13px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none bg-white cursor-pointer"
                                 >
                                     <option>All</option>
                                     <option>Active</option>
@@ -96,12 +101,13 @@ export default function CustomerManagement() {
                                 </select>
                             </div>
 
-                            <div className="flex items-center gap-2">
-                                <span className="text-[13px] font-semibold text-[#18181B]">Date:</span>
+                            {/* Date */}
+                            <div className="flex items-center gap-2 w-full sm:w-auto">
+                                <span className="text-[13px] font-semibold text-[#18181B] whitespace-nowrap">Date:</span>
                                 <select
                                     value={dateFilter}
                                     onChange={(e) => setDateFilter(e.target.value)}
-                                    className="h-[30px] w-[100px] text-[13px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none bg-white cursor-pointer"
+                                    className="h-[30px] w-full sm:w-[120px] text-[13px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none bg-white cursor-pointer"
                                 >
                                     <option>All</option>
                                     <option>Today</option>
@@ -109,12 +115,15 @@ export default function CustomerManagement() {
                                     <option>Last 30 days</option>
                                 </select>
                             </div>
+
                         </div>
 
-                        <button className="text-[11px] bg-white hover:bg-gray-50 text-gray-700 px-4 h-[30px] rounded-lg flex items-center gap-2 font-medium border border-gray-300 transition-colors">
+                        {/* Export */}
+                        <button className="text-[11px] bg-white hover:bg-gray-50 text-gray-700 px-4 h-[30px] rounded-lg flex items-center justify-center gap-2 font-medium border border-gray-300 transition-colors sm:w-auto">
                             <Download className="w-3 h-3" />
                             Export PDF
                         </button>
+
                     </div>
                 </div>
 

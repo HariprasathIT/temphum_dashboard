@@ -51,33 +51,33 @@ const CustomerTable = () => {
 
                         {/* header */}
                         <div className="py-4 px-6 border border-gray-100">
-                            <div className="flex flex-col sm:flex-row  justify-between gap-4">
+                            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
 
-                                {/* Left side - From / To */}
-                                <div className="flex flex-col sm:flex-row gap-4">
+                                {/* From / To */}
+                                <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
 
                                     {/* From */}
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-[13px] text-[#18181B]">From :</span>
+                                    <div className="flex items-center gap-2 w-full sm:w-auto">
+                                        <span className="text-[13px] text-[#18181B] whitespace-nowrap">From:</span>
                                         <input
                                             type="date"
-                                            className="bg-transparent border border-gray-400 rounded-md px-3 py-1.5 text-[12px] focus:outline-none cursor-pointer"
+                                            className="bg-transparent border border-gray-400 rounded-md px-3 py-1.5 text-[12px] focus:outline-none cursor-pointer w-full sm:w-auto"
                                         />
                                     </div>
 
                                     {/* To */}
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-[13px] text-[#18181B]">To :</span>
+                                    <div className="flex items-center gap-2 w-full sm:w-auto">
+                                        <span className="text-[13px] text-[#18181B] whitespace-nowrap">To:</span>
                                         <input
                                             type="date"
-                                            className="bg-transparent border border-gray-400 rounded-md px-3 py-1.5 text-[12px] focus:outline-none cursor-pointer"
+                                            className="bg-transparent border border-gray-400 rounded-md px-3 py-1.5 text-[12px] focus:outline-none cursor-pointer w-full sm:w-auto"
                                         />
                                     </div>
 
                                 </div>
 
-                                {/* Export PDF Button */}
-                                <button className="bg-white text-[#18181B] px-4 py-2 rounded-md flex items-center gap-2 text-[13px] font-medium hover:bg-gray-200">
+                                {/* Export Button */}
+                                <button className="bg-white border border-gray-300 text-[#18181B] px-4 py-2 rounded-md flex items-center justify-center gap-2 text-[13px] font-medium hover:bg-gray-200 sm:w-auto">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M19.5 14.25v-6.75a2.25 2.25 0 00-2.25-2.25h-10.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h6.75m3.75-4.5l-3 3m0 0l-3-3m3 3v-12" />
                                     </svg>
@@ -86,6 +86,7 @@ const CustomerTable = () => {
 
                             </div>
                         </div>
+
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 md:gap-4 px-6 mt-4">
                             {statsCards.map((stat, index) => (

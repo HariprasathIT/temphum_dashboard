@@ -1,6 +1,7 @@
 import { Search, Bell, Mail, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import nystailogo from "/src/assets/nystailogo.png"
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
@@ -9,12 +10,15 @@ function Navbar() {
     <>
       <nav className="w-full flex items-center gap-3 px-4 lg:px-[40px] py-3 shadow-sm bg-white max-md:px-5 max-md:gap-2 sticky top-0 z-10">
         {/* LEFT — LOGO */}
+
         <div className="flex items-center gap-2 w-[255px] max-md:flex-1 max-md:w-auto">
-          <img
-            src={nystailogo}
-            alt="NYSTAILOGO"
-            className="h-[45px] max-md:h-[35px]"
-          />
+          <Link to="/">
+            <img
+              src={nystailogo}
+              alt="NYSTAILOGO"
+              className="h-[45px] max-md:h-[35px]"
+            />
+          </Link>
         </div>
 
         {/* CENTER — SEARCH (Desktop Only) */}
@@ -28,9 +32,9 @@ function Navbar() {
         </div>
 
         {/* RIGHT ICONS */}
-        <div className="flex items-center gap-5 w-[145px] max-md:gap-3 max-md:w-auto" style={{justifyContent:"end"}}>
+        <div className="flex items-center gap-5 w-[145px] max-md:gap-3 max-md:w-auto" style={{ justifyContent: "end" }}>
           {/* Search Toggle Arrow (Mobile/Tab Only) */}
-          <button 
+          <button
             onClick={() => setShowSearch(!showSearch)}
             className="hidden max-md:block text-gray-700 hover:text-gray-900"
             aria-label="Toggle search"
