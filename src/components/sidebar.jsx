@@ -19,10 +19,12 @@ export default function Sidebar() {
             {/* Top menu items */}
             <div className="px-4 lg:px-[40px] space-y-5 mt-5">
                 {/* Add Device Company */}
-                <button className="w-full max-w-[200px] h-[40px] flex items-center gap-3 px-4 bg-[#ED1C24] text-white rounded-lg transition-colors">
-                    <Plus size={14} />
-                    <span className="text-sm font-medium">Add Device Company</span>
-                </button>
+                <Link to="/adddevicecompany" onClick={closeMobileMenu}>
+                    <button className="w-full max-w-[200px] h-[40px] flex items-center gap-3 px-4 bg-[#ED1C24] text-white rounded-lg transition-colors">
+                        <Plus size={14} />
+                        <span className="text-sm font-medium">Add Device Company</span>
+                    </button>
+                </Link>
 
                 {/* Dashboard */}
                 <Link
