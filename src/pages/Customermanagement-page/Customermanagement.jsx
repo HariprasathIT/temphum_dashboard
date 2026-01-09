@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search, Plus, Download, Eye, Trash2, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import headerimg from "/src/assets/CMS/headerimg.png"
 import { Link } from 'react-router-dom';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from "@mui/material";
 
 export default function CustomerManagement() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -9,6 +10,24 @@ export default function CustomerManagement() {
     const [statusFilter, setStatusFilter] = useState('All');
     const [dateFilter, setDateFilter] = useState('All');
     const [currentPage, setCurrentPage] = useState(1);
+
+    const [selectedcustomer, setselectedcustomer] = useState(null);
+    const [open, setopen] = useState(false)
+
+    const handleOpen = (customer) => {
+        setselectedcustomer(customer)
+        setopen(true)
+    };
+
+    const handleClose = () => {
+        setopen(false)
+    };
+
+    const handleDelete = () => {
+        console.log("Deleting", selectedcustomer);
+        setopen(false)
+    };
+
 
     const customers = [
         { id: 1, name: 'ABC Pharma Pvt Ltd', location: 'Coimbatore', status: 'Active', devices: 12, date: 'Jan 22, 2024', statusColor: 'green' },
@@ -169,7 +188,7 @@ export default function CustomerManagement() {
                                                             View
                                                         </button>
                                                     </Link>
-                                                    <button className="bg-red-600 hover:bg-red-700 text-white p-2 rounded-lg transition-colors">
+                                                    <button className="bg-[#ED1C24] text-white p-2 rounded-lg transition-colors" onClick={() => handleOpen(customer)}>
                                                         <Trash2 className="w-4 h-4" />
                                                     </button>
                                                 </div>
@@ -212,6 +231,75 @@ export default function CustomerManagement() {
                     </div>
                 </div>
             </div>
+
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                PaperProps={{
+                    sx: { borderRadius: "12px", width: "320px", paddingY: 1 }
+                }}
+            >
+                <DialogTitle
+                    sx={{
+                        textAlign: "center",
+                        fontWeight: 600,
+                        color: "#18181B",
+                        fontSize: "17px"
+                    }}
+                >
+                    Delete Customer
+                </DialogTitle>
+
+                <DialogContent sx={{ textAlign: "center" }}>
+                    <p className="text-[13px] text-[#71717A]">
+                        Are you sure you want to delete this customer account?
+                    </p>
+                </DialogContent>
+
+                <DialogActions
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 1.5,
+                        pb: 3,
+                        px: 3
+                    }}
+                >
+                    <Button
+                        onClick={handleDelete}
+                        sx={{
+                            backgroundColor: "#ED1C24",
+                            height: "38px",
+                            fontSize: "12px",
+                            color: "#fff",
+                            borderRadius: "6px",
+                            textTransform: "capitalize",
+                            width: "150px",
+                            marginLeft: "7px"
+                        }}
+                    >
+                        Delete Customer
+                    </Button>
+
+                    <Button
+                        onClick={handleClose}
+                        variant="outlined"
+                        sx={{
+                            borderColor: "#ED1C24",
+                            color: "#383838",
+                            height: "38px",
+                            fontSize: "12px",
+                            borderRadius: "6px",
+                            textTransform: "capitalize",
+                            width: "150px"
+                        }}
+                    >
+                        Cancel
+                    </Button>
+                </DialogActions>
+            </Dialog>
+
+
         </>
     );
 }

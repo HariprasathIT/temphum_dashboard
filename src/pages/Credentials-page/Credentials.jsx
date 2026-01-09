@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Plus, Download, Eye, Trash2, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import headerimg from "/src/assets/CREDETIONALS/creditionalsheader.png"
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from "@mui/material";
 
 export default function Credentials() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -8,6 +9,11 @@ export default function Credentials() {
     const [statusFilter, setStatusFilter] = useState('All');
     const [dateFilter, setDateFilter] = useState('All');
     const [currentPage, setCurrentPage] = useState(1);
+
+    const [selectedCustomer, setSelectedCustomer] = useState(null);
+    const [resetOpen, setResetOpen] = useState(false);
+    const [deleteOpen, setDeleteOpen] = useState(false);
+
 
     const customers = [
         { id: 1, name: 'ABC Pharma Pvt Ltd', location: 'Coimbatore', status: 'Active', mailid: "hari@gmail.com", date: 'Jan 22, 2024', statusColor: 'green' },
@@ -151,11 +157,24 @@ export default function Credentials() {
                                             <td className="px-6 py-4 font-medium text-[13px] text-[#71717A]">{customer.date}</td>
                                             <td className="px-6 py-4">
                                                 <div className="flex items-center gap-2">
-                                                    <button className="bg-[#FFBF4A] text-white px-4 py-2 rounded-lg flex items-center gap-2 text-[13px] font-medium transition-colors ">
+                                                    <button
+                                                        onClick={() => {
+                                                            setSelectedCustomer(customer);
+                                                            setResetOpen(true);
+                                                        }}
+                                                        className="bg-[#FFBF4A] text-white px-4 py-2 rounded-lg flex items-center gap-2 text-[13px] font-medium"
+                                                    >
                                                         <Eye className="w-3 h-3" />
                                                         Reset
                                                     </button>
-                                                    <button className="bg-red-600 hover:bg-red-700 text-white p-2 rounded-lg transition-colors">
+
+                                                    <button
+                                                        onClick={() => {
+                                                            setSelectedCustomer(customer);
+                                                            setDeleteOpen(true);
+                                                        }}
+                                                        className="bg-red-600 hover:bg-red-700 text-white p-2 rounded-lg"
+                                                    >
                                                         <Trash2 className="w-4 h-4" />
                                                     </button>
                                                 </div>
@@ -198,6 +217,149 @@ export default function Credentials() {
                     </div>
                 </div>
             </div>
+
+            <Dialog
+                open={resetOpen}
+                onClose={() => setResetOpen(false)}
+                PaperProps={{
+                    sx: { borderRadius: "12px", width: "450px", padding: 2 }
+                }}
+            >
+                <DialogTitle
+                    sx={{
+                        textAlign: "center",
+                        fontWeight: 600,
+                        color: "#18181B",
+                        fontSize: "16px"
+                    }}
+                >
+                    Reset Login Credentials
+                </DialogTitle>
+
+                <DialogContent sx={{ textAlign: "center" }}>
+                    <p className="text-[13px] text-[#71717A] mb-4">
+                        Are you sure you want to reset login credentials for this customer?
+                    </p>
+
+                    <div className="text-[14px] text-[#18181B] space-y-2 text-left">
+                        <p><strong>Customer Name:</strong> {selectedCustomer?.name}</p>
+                        <p><strong>Email ID:</strong> {selectedCustomer?.mailid}</p>
+                    </div>
+                </DialogContent>
+
+                <DialogActions
+                    sx={{
+                        display: "flex",
+                        justifyContent: "start",
+                        px: 3,
+                        pb: 3
+                    }}
+                >
+                    <Button
+                        onClick={() => setResetOpen(false)}
+                        variant="outlined"
+                        sx={{
+                            borderColor: "#ED1C24",
+                            color: "#18181B",
+                            width: "50%",
+                            height: "36px",
+                            fontSize: "12px",
+                            textTransform: "capitalize",
+                        }}
+                    >
+                        Cancel
+                    </Button>
+
+                    <Button
+                        onClick={() => {
+                            console.log("RESET:", selectedCustomer);
+                            setResetOpen(false);
+                        }}
+                        sx={{
+                            backgroundColor: "#ED1C24",
+                            width: "50%",
+                            height: "38px",
+                            fontSize: "12px",
+                            color: "#fff",
+                            textTransform: "capitalize",
+                            ":hover": { backgroundColor: "#c1161c" },
+                        }}
+                    >
+                        Reset Credentials
+                    </Button>
+                </DialogActions>
+            </Dialog>
+
+            <Dialog
+                open={deleteOpen}
+                onClose={() => setDeleteOpen(false)}
+                PaperProps={{
+                    sx: { borderRadius: "12px", width: "320px", paddingY: 1 }
+                }}
+            >
+                <DialogTitle
+                    sx={{
+                        textAlign: "center",
+                        fontWeight: 600,
+                        color: "#18181B",
+                        fontSize: "17px"
+                    }}
+                >
+                    Delete Credentials
+                </DialogTitle>
+
+                <DialogContent sx={{ textAlign: "center" }}>
+                    <p className="text-[13px] text-[#71717A]">
+                        Are you sure you want to delete this customer account?
+                    </p>
+                </DialogContent>
+
+                <DialogActions
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 1.5,
+                        pb: 3,
+                        px: 3
+                    }}
+                >
+                    <Button
+                        onClick={() => {
+                            console.log("DELETE:", selectedCustomer);
+                            setDeleteOpen(false);
+                        }}
+                        sx={{
+                            backgroundColor: "#ED1C24",
+                            height: "38px",
+                            fontSize: "12px",
+                            color: "#fff",
+                            borderRadius: "6px",
+                            textTransform: "capitalize",
+                            width: "150px",
+                            marginLeft:"7px"
+                        }}
+                    >
+                        Delete Credentials
+                    </Button>
+
+                    <Button
+                        onClick={() => setDeleteOpen(false)}
+                        variant="outlined"
+                        sx={{
+                            borderColor: "#ED1C24",
+                            color: "#383838",
+                            height: "38px",
+                            fontSize: "12px",
+                            borderRadius: "6px",
+                            textTransform: "capitalize",
+                            width: "150px"
+                        }}
+                    >
+                        Cancel
+                    </Button>
+                </DialogActions>
+            </Dialog>
+
         </>
     );
 }
