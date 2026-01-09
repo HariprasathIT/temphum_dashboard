@@ -43,12 +43,15 @@ export default function Sidebar() {
                     to="/customers"
                     onClick={closeMobileMenu}
                     className={`w-full max-w-[155px] h-[40px] flex items-center gap-3 px-4 py-3 rounded-lg transition-colors
-            ${pathname === "/customers" ? "bg-[#FFBF4A] text-gray-900" : "text-gray-700 hover:bg-gray-100"}
-          `}
-                >
+                    ${(pathname === "/customers" || pathname.startsWith("/customer"))
+                            ? "bg-[#FFBF4A] text-gray-900"
+                            : "text-gray-700 hover:bg-gray-100"}
+                    `}
+                    >
                     <Users size={14} />
                     <span className="text-sm font-medium">Customers</span>
                 </Link>
+
 
                 {/* Reports */}
                 <Link
