@@ -39,7 +39,7 @@ const Customerdetails = () => {
 
     return (
         <>
-            <section className="max-w-[1350px] mx-auto px-4 mt-5">
+            <section className="max-w-[1350px] mx-auto px-4 mt-5 mb-4">
 
                 {/* Header Section */}
                 <div className="relative rounded-xl overflow-hidden h-[100px] sm:h-[120px] md:h-[140px] mb-5">
