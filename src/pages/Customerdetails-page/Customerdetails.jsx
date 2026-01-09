@@ -27,7 +27,7 @@ const Customerdetails = () => {
     const customers = [
         { id: 1, name: 'ABC Pharma Pvt Ltd', location: 'Coimbatore', status: 'Active', devices: 12, date: 'Jan 22, 2024', statusColor: 'green', lastseen: "3 min ago" },
         { id: 2, name: 'FreshMart Logistics', location: 'Bengaluru', status: 'Inactive', devices: 12, date: 'Jan 22, 2024', statusColor: 'yellow', lastseen: "3 min ago" },
-        { id: 3, name: 'CoolTemp Solutions', location: 'Coimbatore', status: 'Active', devices: 12, date: 'Jan 22, 2024', statusColor: 'green', lastseen: "3 min ago" },
+        // { id: 3, name: 'CoolTemp Solutions', location: 'Coimbatore', status: 'Active', devices: 12, date: 'Jan 22, 2024', statusColor: 'green', lastseen: "3 min ago" },
         // { id: 4, name: 'MediLife Inc', location: 'Pune', status: 'Active', devices: 12, date: 'Jan 22, 2024', statusColor: 'green', lastseen: "3 min ago" }
     ];
 

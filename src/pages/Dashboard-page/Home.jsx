@@ -16,6 +16,7 @@ const Dashboard = () => {
         { label: 'High Humidity', value: '87,974', width: 'w-[85%]' },
         { label: 'Low Temperature', value: '45,211', width: 'w-[45%]' },
         { label: 'Device Offline', value: '21,893', width: 'w-[25%]' },
+        { label: 'Low Temperature', value: '45,211', width: 'w-[65%]' },
     ];
 
     const recentCustomers = [
@@ -62,7 +63,7 @@ const Dashboard = () => {
                 ))}
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:h-[360px] h-full">
                 {/* Sales Overview - Takes 2 columns on large screens */}
                 <div className="lg:col-span-2 bg-white rounded-lg shadow-sm border border-gray-100">
                     <div className="p-4 sm:p-6 pb-4">
